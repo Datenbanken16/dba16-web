@@ -160,17 +160,18 @@ def show_profile(request):
     if request.method == 'POST':
         if request.POST.get('newpassword', False):
             if request.POST['newpassword'] != request.POST['reppassword']:
-                data['error_message'] = "wrong password repitition"
+                data['error_message'] = "Falsche Passwort wiederholung"
             else:
                 user.password = request.POST['newpassword']
                 try:
                     user.password = make_password(user.password)
                     user.save_forRegView()
-                    data['info_message'] = "password successfully changed :)"
+                    data['info_message'] = "Passwort erfolgreich ge&auml;ndert."
                 except ValueError as e:
                     data['error_message'] = e
                 except:
                     data['error_message'] = "something went terribly wrong"
+        else: data['warning_message'] = "Kein Passwort eingegeben"
 
     return render(request, 'coreapp/myprofileView.html', data)
 
@@ -346,7 +347,7 @@ def weather_add(request, pk):
         return JSONResponse(content)
     return HttpResponse(status=404)
 
-  
+
 @csrf_exempt
 def sensordata_add(request, user):
     try:
@@ -443,6 +444,41 @@ def sensordata_add(request, user):
     return HttpResponse(status=404)
 
 
+def TablesPageView(request):
+
+    user = 0
+    try:
+        #user = User.objects.get(username=request.session['username'])
+        user = Question.objects.all();
+    except User.DoesNotExist:
+        return HttpResponse(status=404)
+
+    data = {
+        'username' : user
+    #    'username': user.username,
+     #   'email': user.email,
+      #  'age': user.age,
+       # 'gender': 'male' if user.gender == 'm' else 'female',
+    }
+
+    if request.method == 'POST':
+        if request.POST.get('newpassword', False):
+            if request.POST['newpassword'] != request.POST['reppassword']:
+                data['error_message'] = "Falsche Passwort wiederholung"
+            else:
+                user.password = request.POST['newpassword']
+                try:
+                    user.password = make_password(user.password)
+                    user.save_forRegView()
+                    data['info_message'] = "Passwort erfolgreich ge&auml;ndert."
+                except ValueError as e:
+                    data['error_message'] = e
+                except:
+                    data['error_message'] = "something went terribly wrong"
+
+    return render(request, 'coreapp/tables.html', data)
+
+
 class TestPageView(TemplateView):
 
     template_name = "coreapp/bootstrap.html"
@@ -462,8 +498,3 @@ class HomePageView(TemplateView):
 class MyprofilePageView(TemplateView):
 
     template_name = "coreapp/myprofileView.html"
-
-class TablesPageView(TemplateView):
-
-    template_name = "coreapp/tables.html"
-
