@@ -2,7 +2,7 @@
 <html xmlns:width="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Datenanalyse</title>
+    <title>Tabellen</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -62,6 +62,11 @@
 <div class="container">
     <h3>Ja ne</h3>
     <p>Hier kommt noch was hin</p>
+
+    <h4>Name: {% if username %}{{ username }}{% endif %}</h4>
+    <h4>E-Mail: {% if email %}{{ email }}{% endif %}</h4>
+    <h4>Age: {% if age %}{{ age }}{% endif %}</h4>
+    <h4>Gender: {% if gender %}{{ gender }}{% endif %}</h4>
 </div>
 
 </body>

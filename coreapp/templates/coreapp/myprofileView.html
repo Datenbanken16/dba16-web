@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>eingeloggt</title>
+    <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
@@ -16,7 +16,7 @@
         display: inline-block;
         font-size: 14px;
     }
-    button {
+    .input {
         background-color: #008CBA;
         border: none;
         color: white;
@@ -82,6 +82,7 @@
 
     <hr>
     {% if info_message %}<p><strong><font color="green">{{ info_message }}</font></strong></p><br>{% endif %}
+    {% if warning_message %}<p><strong><font color="orange">{{ warning_message }}</font></strong></p><br>{% endif %}
     {% if error_message %}<p><strong><font color="red">{{ error_message }}</font></strong></p><br>{% endif %}
 
     <h4>Passwort ändern:</h4>
@@ -90,7 +91,7 @@
         <input type="password" name="newpassword" placeholder="Neues Passwort"><br>
         <input type="password" name="reppassword" placeholder="Passwort wiederholen"><br>
         <br>
-        <input type="submit" value="OK"/>
+        <input class="input" type="submit" value="OK"/>
     </form>
 </div>
 </body>

@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^index', views.IndexPageView.as_view(), name='index'),
     url(r'^home', views.HomePageView.as_view(), name='home'),
     #url(r'^myprofile', views.MyprofilePageView.as_view(), name='profile'),
-    url(r'^tables', views.TablesPageView.as_view(), name='tables')
+    url(r'^tables', views.TablesPageView, name='tables')
 ]
