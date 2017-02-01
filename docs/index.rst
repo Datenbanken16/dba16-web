@@ -27,6 +27,8 @@ This documentation shows you how to start this project and how the models work.
    Requirements <requirements.rst>
    Quickstart <quick_start.rst>
    Models <models.rst>
+   Serializers <serializers.rst>
+   Views <views.rst>
 
 Indices and tables
 ==================

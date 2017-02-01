@@ -12,11 +12,16 @@ import datetime
 
 
 class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
+    """ An HttpResponse that renders its content into JSON.
+
     """
 
     def __init__(self, data, **kwargs):
+        """Constructor for string operations
+
+        :param data: data to render for JSON
+        :param kwargs: keyword arguments
+        """
         content = JSONRenderer().render(data)
         kwargs['content_type'] = 'application/json'
         super(JSONResponse, self).__init__(content, **kwargs)
@@ -24,8 +29,12 @@ class JSONResponse(HttpResponse):
 
 @csrf_exempt
 def user_list(request):
-    """
-    List all users, or create a new user.
+    """ List all users, or create a new user.
+
+    :param request: HttpRequest , Get or Post
+    :return: JSONResponse(serializer,data)
+    :return: JSONResponse(serializer.data, status=201)
+    :return: JSONResponse(serializer.errors, status=400)
     """
     if request.method == 'GET':
         users = User.objects.all()
@@ -45,6 +54,13 @@ def user_list(request):
 def user_detail(request, pk):
     """
     Retrieve, update or delete userdata.
+
+    :param request: User data
+    :param pk: Primary Key of the User
+    :return: HttpResponse(status=404) = error
+    :return: JSONResponse(serializer.data) = accept
+    :return: JSONResponse(serializer.errors, status=400) = error
+    :return: return HttpResponse(status=204) = accept
     """
     try:
         users = User.objects.get(username=pk)
@@ -70,6 +86,12 @@ def user_detail(request, pk):
 
 @csrf_exempt
 def auth_check(request):
+    """
+    Checks the authentication.
+    :param request: Userdata for authentification
+    :return: JSONResponse(content) = auth. failt or passed
+    :return: HttpResponse(status=404) = Error
+    """
     try:
         data = JSONParser().parse(request)
         users = User.objects.get(username=data['username'])
@@ -103,6 +125,11 @@ def auth_check(request):
 #uebereinstimmt.
 #Ist dies der Fall, wird eine Session-ID gesetzt und zum Inhalt verwiesen.
 def user_login(request):
+    """
+    Checks datas from login page and gives ja session-id
+    :param request: Userdata from login
+    :return: session-id
+    """
     def reload(errorMsg):
         return render(request, 'coreapp/loginView.html', {
             'error_message': errorMsg,
@@ -132,6 +159,11 @@ def user_login(request):
 
 #Leitet den Nutzer zum Login weiter und löscht die aktuelle Session-ID.
 def user_logout(request):
+    """
+    Logs the user out and deletes the session
+    :param request: Logout action
+    :return: reload with passed message
+    """
     def reload(errorMsg):
         return render(request, 'coreapp/loginView.html')
     try:
@@ -143,10 +175,21 @@ def user_logout(request):
 
 
 def show_home(request):
+    """
+    Show the home screen
+    :param request: Request for entering homescreen
+    :return: render homescreen
+    """
     return render(request, 'coreapp/home.html')
 
 
 def show_profile(request):
+    """
+    Show the Profile page of the user
+    :param request: Request for entering Profile
+    :return: render Profilescreen - if accept
+    :return; render Login - if no session-id
+    """
     user = 0
     if request.session.has_key('username'):
         try:
@@ -182,6 +225,13 @@ def show_profile(request):
     return render(request, 'coreapp/myprofileView.html', data)
 
 def show_user_registration_form(request):
+    """
+    Show the user Registration page
+
+    :param request: Request for the Registration-view
+    :return: render Registration - if accept
+    :return: render Login - if registratet
+    """
     if request.method == 'GET':
         return render(request, 'coreapp/registrationView.html', {})
     elif request.method == 'POST':
@@ -220,6 +270,12 @@ def show_user_registration_form(request):
 
 @csrf_exempt
 def question_add(request):
+    """
+    Add a new question to the app
+
+    :param request: the new question
+    :return: true or false
+    """
     try:
         data = JSONParser().parse(request)
     except ValueError:
@@ -245,6 +301,12 @@ def question_add(request):
 
 @csrf_exempt
 def question_answer(request):
+    """
+    Add question Answers to the app
+
+    :param request: the new answer
+    :return: true or false
+    """
     try:
         data = JSONParser().parse(request)
     except ValueError:
@@ -265,6 +327,11 @@ def question_answer(request):
 
 @csrf_exempt
 def question_get(request):
+    """
+    Get a question
+    :param request: Get question
+    :return: question
+    """
     if request.method == 'GET':
         question = Question.objects.all()
         serializer = QuestionChoiceSerializer(question, many=True)
@@ -273,6 +340,11 @@ def question_get(request):
 
 @csrf_exempt
 def location_add(request):
+    """
+    Add a location
+    :param request: Location data
+    :return: true or false
+    """
     try:
         data = JSONParser().parse(request)
     except ValueError:
@@ -291,6 +363,11 @@ def location_add(request):
 
 @csrf_exempt
 def location_get(request):
+    """
+    Get a Location
+    :param request: get location
+    :return: location
+    """
     if request.method == 'GET':
         location = Location.objects.all()
         serializer = LocationSerializer(location, many=True)
@@ -299,6 +376,13 @@ def location_get(request):
 
 @csrf_exempt
 def room_add(request, pk):
+    """
+    Add a new Room
+
+    :param request: Room data
+    :param pk: Primary Key for the new Room
+    :return: true or false
+    """
     try:
         data = JSONParser().parse(request)
     except ValueError:
@@ -318,6 +402,12 @@ def room_add(request, pk):
 
 @csrf_exempt
 def location_room_get(request):
+    """
+    Get a location from a room
+
+    :param request: Get Roomlocation
+    :return: Roomlocation
+    """
     if request.method == 'GET':
         location = Location.objects.all()
         serializer = LocationRoomSerializer(location, many=True)
@@ -325,6 +415,11 @@ def location_room_get(request):
 
 @csrf_exempt
 def sensor_stepcount_get(request):
+    """
+    Get counted steps from a user
+    :param request: Get Steps
+    :return: Steps
+    """
     if request.method == 'GET':
         stepcount = SensorStepCount.objects.all()
         serializer = SensorStepCountSerializer(stepcount, many=True)
@@ -333,6 +428,11 @@ def sensor_stepcount_get(request):
 
 @csrf_exempt
 def sensor_sleepstage_get(request):
+    """
+    Get sleepstage from user
+    :param request: Get sleepstage
+    :return: sleepstage
+    """
     if request.method == 'GET':
         sleepStage = SensorSleepStage.objects.all()
         serializer = SensorSleepStageSerializer(sleepStage, many=True)
@@ -453,6 +553,12 @@ def sensor_uvexposure_get(request):
 
 @csrf_exempt
 def weather_add(request, pk):
+    """
+    Saves the weather data from the moment
+    :param request: weatherdata
+    :param pk: Primary Key for the data
+    :return: true or false
+    """
     try:
         data = JSONParser().parse(request)
     except ValueError:
@@ -476,6 +582,12 @@ def weather_add(request, pk):
 
 @csrf_exempt
 def sensordata_add(request, user):
+    """
+    Saves data from a fitnesstracker
+    :param request: fitnessdata
+    :param user: the user the data comes from
+    :return: true or false
+    """
     try:
         data = JSONParser().parse(request)
     except ValueError:
@@ -571,7 +683,11 @@ def sensordata_add(request, user):
 
 
 def TablesPageView(request):
-
+    """
+    Renders the view for the Table-Page
+    :param request: Request for Table-Page
+    :return: TablePage
+    """
     user = 0
     try:
         #user = User.objects.get(username=request.session['username'])
