@@ -13,6 +13,7 @@ Install all Components
 For this you have to install Django on your enviroment.
 
 First install a Postgresql-Database on your own Computer.
+
 .. code-block:: bash
 
     $ sudo apt-get update

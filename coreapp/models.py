@@ -25,7 +25,7 @@ class User(models.Model):
     gender = models.CharField(max_length=1)
 
     def __str__(self):
-        """Returns data of class User
+        """Constructor for string operations
 
         :return: username(string) - password(string) - email(string) - age(smallInt) - gender(string)
         """

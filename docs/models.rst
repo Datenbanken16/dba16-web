@@ -24,14 +24,14 @@ class User(models.Model):
 
 **Functions**
 
-.. function:: def __str__(self):
+.. function:: __str__(self):
 
     Returns data of class User
 
     :return: username(string) - password(string) - email(string) - age(smallInt) - gender(string)
 
 
-.. function:: def save_forRegView(self, *args, **kwargs):
+.. function:: save_forRegView(self, *args, **kwargs):
 
     Saves data from the registration view
 
