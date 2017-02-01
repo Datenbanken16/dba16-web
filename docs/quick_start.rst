@@ -186,8 +186,8 @@ Select a username,emailadress and password. Test youre Server:
 
 Visit your server in your web browser:
 
-http://server_domain_or_IP:8000
-maybe: localhost:8000
+http://localhost:8000
+
 How to fix the "bad magic number" error
 
 Run from the highest directory of your project:
