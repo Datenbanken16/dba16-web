@@ -69,7 +69,7 @@ class SensorSleepStageSerializer(serializers.ModelSerializer):
 class SensorSleepSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorSleep
-        fields = ('end_time' 'start_time', 'time_offset', 'user')
+        fields = ('end_time', 'start_time', 'time_offset', 'user')
 
 
 class SensorExerciseSerializer(serializers.ModelSerializer):
