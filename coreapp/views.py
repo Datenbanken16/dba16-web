@@ -164,6 +164,7 @@ def show_profile(request):
             else:
                 user.password = request.POST['newpassword']
                 try:
+                    user.password = make_password(user.password)
                     user.save_forRegView()
                     data['info_message'] = "password successfully changed :)"
                 except ValueError as e:
