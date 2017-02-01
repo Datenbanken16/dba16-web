@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Start Guide &#8212; dba16web 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="quick-start-guide">
+<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-dba16web-project">
+<h2>Download dba16web project<a class="headerlink" href="#download-dba16web-project" title="Permalink to this headline">¶</a></h2>
+<p>First, you need to download the dba16web from GitHub</p>
+<p>&lt;a href=&#8221;<a class="reference external" href="https://github.com/Datenbanken16/dba16-web">https://github.com/Datenbanken16/dba16-web</a>&#8221; alt=&#8221;#&#8221;&gt; -&gt; Project Link &lt;- &lt;/a&gt;</p>
+</div>
+<div class="section" id="install-all-components">
+<h2>Install all Components<a class="headerlink" href="#install-all-components" title="Permalink to this headline">¶</a></h2>
+<p>For this you have to install Django on your enviroment.</p>
+<p>First install a Postgresql-Database on your own Computer.
+.. sourcecode:: PostgreSQL</p>
+<blockquote>
+<div>sudo apt-get update
+sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib</div></blockquote>
+<p>Change to the User who was created by the commands before (postgres):</p>
+<p>Log into Postgres :</p>
+<p>Now you can create your Database (!dont forget the semikolon after each operation!):</p>
+<p>Create a User:</p>
+<p>Make some Setups for speeding up operations:</p>
+<p>Now the User needs access to your database:</p>
+<p>Back to the user&#8217;s shell:</p>
+<p>For the REST SERVICE DJANGO-RESTFRAMEWORK you need to install:</p>
+<p>The django REST framework, markdown support for browsable API and filtering support</p>
+<p>Add &#8216;rest_framework&#8217; to your INSTALLED_APPS setting in settings.py.</p>
+<p>If you&#8217;re intending to use the browsable API you&#8217;ll probably also want to add REST framework&#8217;s login and logout views. Add the following to your root urls.py file.</p>
+<dl class="docutils">
+<dt>urlpatterns = [</dt>
+<dd>...
+url(r&#8217;^api-auth/&#8217;, include(&#8216;rest_framework.urls&#8217;, namespace=&#8217;rest_framework&#8217;))</dd>
+</dl>
+<p>]
+More Information on Django REST Framework: <a class="reference external" href="http://www.django-rest-framework.org/">http://www.django-rest-framework.org/</a></p>
+<p>To avoid crossite-skripting Conflicts install Django CORS Headers</p>
+<p>pip install django-cors-headers
+make some changes in settings.py:</p>
+<p>add to installed apps</p>
+<dl class="docutils">
+<dt>INSTALLED_APPS = (</dt>
+<dd>...
+&#8216;corsheaders&#8217;,
+...</dd>
+</dl>
+<p>)
+add to middleware</p>
+<dl class="docutils">
+<dt>MIDDLEWARE = [  # Or MIDDLEWARE_CLASSES on Django &lt; 1.10</dt>
+<dd>...
+&#8216;corsheaders.middleware.CorsMiddleware&#8217;,
+&#8216;django.middleware.common.CommonMiddleware&#8217;,
+...</dd>
+</dl>
+<p>]
+for now we allow all crossitescriptings</p>
+<p>CORS_ORIGIN_ALLOW_ALL = True
+To use Bootstrap install the following</p>
+<p>pip install django-bootstrap3
+make some changes in settings.py:</p>
+<p>add to installed apps</p>
+<dl class="docutils">
+<dt>INSTALLED_APPS = (</dt>
+<dd>...
+&#8216;bootstrap3&#8217;,
+...</dd>
+</dl>
+<p>)
+More Information on Django bootstrap3: &lt;a href=&#8221;<a class="reference external" href="https://django-bootstrap3.readthedocs.io">https://django-bootstrap3.readthedocs.io</a>&#8220;&gt;Here!&lt;/a&gt;</p>
+<p>After that, you can start coding with Django.</p>
+<p>The Setup for the server you can see in YourProject/YourProject/settings.py. In our case: dba16-web/wohlfuehlprojekt/settings.py.</p>
+<dl class="docutils">
+<dt>DATABASES = {</dt>
+<dd><dl class="first docutils">
+<dt>&#8216;default&#8217;: {</dt>
+<dd>&#8216;ENGINE&#8217;: &#8216;django.db.backends.postgresql&#8217;,
+&#8216;NAME&#8217;: &#8216;testdb&#8217;,
+&#8216;USER&#8217;: &#8216;testadmin&#8217;,
+&#8216;PASSWORD&#8217;: &#8216;qwertz&#8217;,
+&#8216;HOST&#8217;: &#8216;127.0.0.1&#8217;,
+&#8216;PORT&#8217;: &#8216;5432&#8217;,</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>}
+To start your server. Open another terminal and navigate to /etc/init.d/ and start your database with &#8221;./postgresql start&#8221;. With the command &#8220;psql -l&#8221; you can see your running databases.</p>
+<p>Apply the migrations to your database. Go into your Project (the &#8220;dba16-web&#8221; folder). And set up the initial databse structure:</p>
+<p>python manage.py makemigrations
+python manage.py migrate
+Create an administrative account:</p>
+<p>python manage.py createsuperuser
+Select a username,emailadress and password. Test youre Server:</p>
+<p>python manage.py runserver 127.0.0.1:8000
+Visit your server in your web browser:</p>
+<p><a class="reference external" href="http://server_domain_or_IP:8000">http://server_domain_or_IP:8000</a>
+maybe: localhost:8000
+How to fix the &#8220;bad magic number&#8221; error</p>
+<p>Run from the highest directory of your project:</p>
+<p>find . -name &#8216;<a href="#id1"><span class="problematic" id="id2">*</span></a>.pyc&#8217; -delete</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick Start Guide</a><ul>
+<li><a class="reference internal" href="#download-dba16web-project">Download dba16web project</a></li>
+<li><a class="reference internal" href="#install-all-components">Install all Components</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/quik_start.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Eugen Wolf.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/quik_start.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

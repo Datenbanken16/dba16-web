@@ -111,7 +111,7 @@ def user_login(request):
         })
     if request.method == 'GET':
         if request.session.has_key('username'):
-            return show_profile(request, request.session['username'])
+            return show_profile(request)
         else:
             return render(request, 'coreapp/loginView.html')
     else:
@@ -123,7 +123,7 @@ def user_login(request):
             return reload('Username oder Passwort falsch.')
         if check_password(user_request_password, user_datensatz.password):
             request.session['username'] = user_datensatz.username
-            return show_profile(request, user_datensatz.username)
+            return show_profile(request)
         else:
             return reload('Username oder Passwort falsch.')
 
@@ -140,12 +140,15 @@ def user_logout(request):
         pass
 
 
-def show_profile(request, username):
-
-    try:
-        user = User.objects.get(username=username)
-    except User.DoesNotExist:
-        return HttpResponse(status=404)
+def show_profile(request):
+    user = 0
+    if request.session.has_key('username'):
+        try:
+            user = User.objects.get(username=request.session['username'])
+        except User.DoesNotExist:
+            return HttpResponse(status=404)
+    else:
+        return render(request, 'coreapp/loginView.html')
 
     data = {
         'username': user.username,
@@ -154,28 +157,21 @@ def show_profile(request, username):
         'gender': 'male' if user.gender == 'm' else 'female',
     }
 
-    #if request.method == 'POST':
-        #if request.POST['newpassword']:
-     #       if request.POST['newpassword'] != request.POST['reppassword']:
-       #         data['error_message'] = "wrong password repitition"
-      #      else:
-        #        user.password = request.POST['newpassword']
-         #       try:
-          #          user.save_forRegView()
-           #         data['info_message'] = "password successfully changed :)"
-           #     except ValueError as e:
-           #         data['error_message'] = e
-           #     except:
-           #         data['error_message'] = "something went terribly wrong"
-
-    if request.method == 'POST' and 'logout' in request.POST:
-        return user_logout(request)
+    if request.method == 'POST':
+        if request.POST.get('newpassword', False):
+            if request.POST['newpassword'] != request.POST['reppassword']:
+                data['error_message'] = "wrong password repitition"
+            else:
+                user.password = request.POST['newpassword']
+                try:
+                    user.save_forRegView()
+                    data['info_message'] = "password successfully changed :)"
+                except ValueError as e:
+                    data['error_message'] = e
+                except:
+                    data['error_message'] = "something went terribly wrong"
 
     return render(request, 'coreapp/myprofileView.html', data)
-
-def registration_successful(request):
-    return HttpResponse("<font color=\"green\">User was successfully registered :)</font>")
-
 
 def show_user_registration_form(request):
     if request.method == 'GET':
@@ -205,7 +201,7 @@ def show_user_registration_form(request):
                 try:
                     newUser.password = make_password(newUser.password)
                     newUser.save_forRegView()
-                    return HttpResponseRedirect(reverse('coreapp:reg_ok'))
+                    return render(request, 'coreapp/loginView.html')
                 except ValueError as e:
                     return reload(e)
                 except:
