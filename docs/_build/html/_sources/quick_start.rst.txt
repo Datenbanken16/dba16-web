@@ -18,7 +18,7 @@ First install a Postgresql-Database on your own Computer.
     $ sudo apt-get update
     $ sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
 
-Change to the User who was created by the commands before (postgres):
+Switch to the User who was created by the commands before (postgres):
 
 .. code-block:: bash
 
@@ -75,10 +75,10 @@ Add 'rest_framework' to your INSTALLED_APPS setting in settings.py.
 
 .. code-block:: bash
 
-    $ INSTALLED_APPS = (
-    $     ...
-    $     'rest_framework',
-    $ )
+     INSTALLED_APPS = (
+         ...
+         'rest_framework',
+     )
 
 If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.
 
@@ -95,7 +95,7 @@ To avoid crossite-skripting Conflicts install Django CORS Headers
 
 .. code-block:: bash
 
-    pip install django-cors-headers
+    $ pip install django-cors-headers
 
 make some changes in settings.py:
 
@@ -167,18 +167,27 @@ To start your server. Open another terminal and navigate to /etc/init.d/ and sta
 
 Apply the migrations to your database. Go into your Project (the "dba16-web" folder). And set up the initial databse structure:
 
-python manage.py makemigrations
-python manage.py migrate
+.. code-block:: bash
+
+    $ python manage.py makemigrations
+    $ python manage.py migrate
+
 Create an administrative account:
 
-python manage.py createsuperuser
+.. code-block:: bash
+
+    $ python manage.py createsuperuser
+
 Select a username,emailadress and password. Test youre Server:
 
-python manage.py runserver 127.0.0.1:8000
+.. code-block:: bash
+
+    $ python manage.py runserver 127.0.0.1:8000
+
 Visit your server in your web browser:
 
-http://server_domain_or_IP:8000
-maybe: localhost:8000
+http://localhost:8000
+
 How to fix the "bad magic number" error
 
 Run from the highest directory of your project:

@@ -1,0 +1,1009 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Models &#8212; dba16web 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Quick Start Guide" href="quick_start.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
+<p><strong>This are all classes and functions</strong></p>
+<span class="target" id="module-models"></span><div class="section" id="class-user-models-model">
+<h2>class User(models.Model):<a class="headerlink" href="#class-user-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A Useraccount for access data to the homepage</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>The username the user choose</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>The password the user choose</td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>The email of the user</td>
+</tr>
+<tr class="row-odd"><td>age</td>
+<td>The age of the user</td>
+</tr>
+<tr class="row-even"><td>gender</td>
+<td>The gender of the user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Functions</strong></p>
+<dl class="function">
+<dt>
+<code class="descname">def __str__(self):</code></dt>
+<dd><p>Returns data of class User</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">username(string) - password(string) - email(string) - age(smallInt) - gender(string)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">def save_forRegView(self, *args, **kwargs):</code></dt>
+<dd><p>Saves data from the registration view</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>args</strong> &#8211; data of class User</li>
+<li><strong>kwargs</strong> &#8211; keyword arguments</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">User &#8211; Saves arguments</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="class-location-models-model">
+<h2>class Location(models.Model):<a class="headerlink" href="#class-location-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A Location for class Room(models.Model):the User</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>city</td>
+<td>The city where the user is</td>
+</tr>
+<tr class="row-odd"><td>country_short</td>
+<td>The abbreviation for the Country</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-room-models-modela-room-the-user-is-in">
+<h2>class Room(models.ModelA Room the User is in):<a class="headerlink" href="#class-room-models-modela-room-the-user-is-in" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A Room the User can be in</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>location</td>
+<td>The location the user is at</td>
+</tr>
+<tr class="row-odd"><td>identifier</td>
+<td>A identifier for the location</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-question-models-model">
+<h2>class Question(models.Model):<a class="headerlink" href="#class-question-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Questions for the User</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>question_text</td>
+<td>The text for the question</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-choice-models-model">
+<h2>class Choice(models.Model):<a class="headerlink" href="#class-choice-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The Choice the User can make for a Question</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>question</td>
+<td>The question for the User</td>
+</tr>
+<tr class="row-odd"><td>choice_imagePath</td>
+<td>The choice with maxlength 200</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-useranswer-models-model">
+<h2>class UserAnswer(models.Model):<a class="headerlink" href="#class-useranswer-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A Answer the User can give</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The User who answers</td>
+</tr>
+<tr class="row-odd"><td>choice</td>
+<td>The answer the user gives</td>
+</tr>
+<tr class="row-even"><td>date</td>
+<td>The date when the user make the answer</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-weather-models-model">
+<h2>class Weather(models.Model):<a class="headerlink" href="#class-weather-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The Weather outside from a location</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>location</td>
+<td>The location where the user is</td>
+</tr>
+<tr class="row-odd"><td>temperature</td>
+<td>The temperature outside</td>
+</tr>
+<tr class="row-even"><td>pressure</td>
+<td>The pressure outsie</td>
+</tr>
+<tr class="row-odd"><td>humidity</td>
+<td>The humidity outside</td>
+</tr>
+<tr class="row-even"><td>windspeed</td>
+<td>The windspeed at the moment</td>
+</tr>
+<tr class="row-odd"><td>winddegree</td>
+<td>The winddegree at the moment</td>
+</tr>
+<tr class="row-even"><td>date</td>
+<td>The date for all datas</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorstepcount-models-model">
+<h2>class SensorStepCount(models.Model):<a class="headerlink" href="#class-sensorstepcount-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The Steps the User made and Energie used</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The User we get data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The starttime we count from</td>
+</tr>
+<tr class="row-even"><td>end_time</td>
+<td>The endtime we count from</td>
+</tr>
+<tr class="row-odd"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-even"><td>count</td>
+<td>The counted steps</td>
+</tr>
+<tr class="row-odd"><td>distance</td>
+<td>The distance the user walked</td>
+</tr>
+<tr class="row-even"><td>calorie</td>
+<td>The calories the user has burned</td>
+</tr>
+<tr class="row-odd"><td>speed</td>
+<td>The avarage speed he walked</td>
+</tr>
+<tr class="row-even"><td>sample_position_type</td>
+<td>The sample position type</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorsleepstage-models-model">
+<h2>class SensorSleepStage(models.Model):<a class="headerlink" href="#class-sensorsleepstage-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The data of the sleep stages</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the sleep data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The start time when the user enters a sleep stage</td>
+</tr>
+<tr class="row-even"><td>end_time</td>
+<td>The endtime of the sleepstage</td>
+</tr>
+<tr class="row-odd"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-even"><td>sleep_id</td>
+<td>A ID for the sleep stage</td>
+</tr>
+<tr class="row-odd"><td>stage</td>
+<td>The stage the user was in while sleeping</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorsleep-models-model">
+<h2>class SensorSleep(models.Model):<a class="headerlink" href="#class-sensorsleep-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The start and end time the user sleeps</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time the user fall asleep</td>
+</tr>
+<tr class="row-even"><td>end_time</td>
+<td>The time when the user wakes up</td>
+</tr>
+<tr class="row-odd"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorexercise-models-model">
+<h2>class SensorExercise(models.Model):<a class="headerlink" href="#class-sensorexercise-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The data from the user while doing sports</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time the user starts an exercise</td>
+</tr>
+<tr class="row-even"><td>end_time</td>
+<td>The time the user ends his exercise</td>
+</tr>
+<tr class="row-odd"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-even"><td>calorie</td>
+<td>The calories burned</td>
+</tr>
+<tr class="row-odd"><td>duration</td>
+<td>The duration from the exercise</td>
+</tr>
+<tr class="row-even"><td>exercise_type</td>
+<td>The type of exercise the user do</td>
+</tr>
+<tr class="row-odd"><td>exercise_custom_type</td>
+<td>A custom exercise the user can do</td>
+</tr>
+<tr class="row-even"><td>distance</td>
+<td>The distance when the user walks or runs</td>
+</tr>
+<tr class="row-odd"><td>altitude_gain</td>
+<td>The altitude he surmount</td>
+</tr>
+<tr class="row-even"><td>altitude_loss</td>
+<td>The height he gets down</td>
+</tr>
+<tr class="row-odd"><td>count</td>
+<td>The steps the user made</td>
+</tr>
+<tr class="row-even"><td>count_type</td>
+<td>The type how we count</td>
+</tr>
+<tr class="row-odd"><td>max_speed</td>
+<td>The maximum speed the user</td>
+</tr>
+<tr class="row-even"><td>mean_speed</td>
+<td>The average speed of the User</td>
+</tr>
+<tr class="row-odd"><td>max_caloricburn_rate</td>
+<td>The maximum rate of burned calories</td>
+</tr>
+<tr class="row-even"><td>max_caloricburn_rate</td>
+<td>The average rate of burned calories</td>
+</tr>
+<tr class="row-odd"><td>max_cadence</td>
+<td>The maximum cadence while exercise</td>
+</tr>
+<tr class="row-even"><td>mean_cadence</td>
+<td>The average cadence while exercise</td>
+</tr>
+<tr class="row-odd"><td>max_heart_rate</td>
+<td>The maximum heart rate of the User</td>
+</tr>
+<tr class="row-even"><td>mean_heart_rate</td>
+<td>The average heart rate of the User</td>
+</tr>
+<tr class="row-odd"><td>min_heart_rate</td>
+<td>The minimum heart rate of the User</td>
+</tr>
+<tr class="row-even"><td>max_altitude</td>
+<td>The maximum altitude the user surmounted</td>
+</tr>
+<tr class="row-odd"><td>mean_altitude</td>
+<td>The average altitude the user surmounted</td>
+</tr>
+<tr class="row-even"><td>incline_distance</td>
+<td>The distance of incline</td>
+</tr>
+<tr class="row-odd"><td>decline_distance</td>
+<td>The distance of decline</td>
+</tr>
+<tr class="row-even"><td>max_power</td>
+<td>The maximum of power used</td>
+</tr>
+<tr class="row-odd"><td>mean_power</td>
+<td>The average of power used</td>
+</tr>
+<tr class="row-even"><td>mean_rpm</td>
+<td>The average of rounds per minute</td>
+</tr>
+<tr class="row-odd"><td>location</td>
+<td>The location where the data were send</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorwaterintake-models-model">
+<h2>class SensorWaterIntake(models.Model):<a class="headerlink" href="#class-sensorwaterintake-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The Water the User drinks</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The start time when we count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>The amount the user drinks</td>
+</tr>
+<tr class="row-even"><td>unit_amount</td>
+<td>The unit we count the amount</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorfoodintake-models-model">
+<h2>class SensorFoodIntake(models.Model):<a class="headerlink" href="#class-sensorfoodintake-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The food the User eats</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user wer get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The start time when we count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>calorie</td>
+<td>The calories eaten</td>
+</tr>
+<tr class="row-even"><td>food_info_id</td>
+<td>The id of the food</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>The amount the user eats</td>
+</tr>
+<tr class="row-even"><td>unit</td>
+<td>The unit we count the amount</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>The name of the meal</td>
+</tr>
+<tr class="row-even"><td>meal_type</td>
+<td>The type of the meal</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorcaffeineintake-models-model">
+<h2>class SensorCaffeineIntake(models.Model):<a class="headerlink" href="#class-sensorcaffeineintake-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The value of caffeine the user takes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The start time we count from</td>
+</tr>
+<tr class="row-even"><td>time_offeset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>The amount the user takes</td>
+</tr>
+<tr class="row-even"><td>unit_amount</td>
+<td>The unit we count the amount</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorheartrate-models-model">
+<h2>class SensorHeartRate(models.Model):<a class="headerlink" href="#class-sensorheartrate-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The data of the Heart Sensor</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>end_time</td>
+<td>The time we finish to count</td>
+</tr>
+<tr class="row-odd"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-even"><td>heart_rate</td>
+<td>The heart rate of the user</td>
+</tr>
+<tr class="row-odd"><td>heart_beat_count</td>
+<td>The heart beat of the user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorbodytemperature-models-model">
+<h2>class SensorBodyTemperature(models.Model):<a class="headerlink" href="#class-sensorbodytemperature-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The body temperature of the user</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>temperature</td>
+<td>The body temperature of the user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorbloodpressure-models-model">
+<h2>class SensorBloodPressure(models.Model):<a class="headerlink" href="#class-sensorbloodpressure-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Questions for the User</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>systolic</td>
+<td>The systolic blood pressure</td>
+</tr>
+<tr class="row-even"><td>diastolic</td>
+<td>The diastolic blood pressure</td>
+</tr>
+<tr class="row-odd"><td>mean</td>
+<td>The mean value</td>
+</tr>
+<tr class="row-even"><td>pulse</td>
+<td>The pulse of the user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorhba1c-models-model">
+<h2>class SensorHbA1c(models.Model):<a class="headerlink" href="#class-sensorhba1c-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The hbA1c value of the user</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>hba1c</td>
+<td>The hba1c value of the user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorbloodglucose-models-model">
+<h2>class SensorBloodGlucose(models.Model):<a class="headerlink" href="#class-sensorbloodglucose-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The glucose value of the user</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>glucose</td>
+<td>The gluose value of the user</td>
+</tr>
+<tr class="row-even"><td>meal_time</td>
+<td>The time the user eats the meal</td>
+</tr>
+<tr class="row-odd"><td>meal_type</td>
+<td>The type of the meal</td>
+</tr>
+<tr class="row-even"><td>measurement_type</td>
+<td>The type of measurement</td>
+</tr>
+<tr class="row-odd"><td>sample_source_type</td>
+<td>The type of source</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensoroxygensaturation-models-model">
+<h2>class SensorOxygenSaturation(models.Model):<a class="headerlink" href="#class-sensoroxygensaturation-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The Oxygen saturation the user has</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>end_time</td>
+<td>The time we finish to count</td>
+</tr>
+<tr class="row-odd"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-even"><td>spo2</td>
+<td>The spo2 value of the user</td>
+</tr>
+<tr class="row-odd"><td>heart_rate</td>
+<td>The heart-rate of the user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensorambienttemperature-models-model">
+<h2>class SensorAmbientTemperature(models.Model):<a class="headerlink" href="#class-sensorambienttemperature-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The data of a Room sensor</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>temperature</td>
+<td>The temperature where the user is</td>
+</tr>
+<tr class="row-even"><td>humidity</td>
+<td>The humidity where the user is</td>
+</tr>
+<tr class="row-odd"><td>latitude</td>
+<td>The latitude where the user is</td>
+</tr>
+<tr class="row-even"><td>longtitude</td>
+<td>The longtitude where the user is</td>
+</tr>
+<tr class="row-odd"><td>altitude</td>
+<td>The altitude of the users position</td>
+</tr>
+<tr class="row-even"><td>accuracy</td>
+<td>The accuracy of the position</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="class-sensoruvexposure-models-model">
+<h2>class SensorUvExposure(models.Model):<a class="headerlink" href="#class-sensoruvexposure-models-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>UV Value for the user position</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attributes</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>The user we get the data from</td>
+</tr>
+<tr class="row-odd"><td>start_time</td>
+<td>The time we start to count</td>
+</tr>
+<tr class="row-even"><td>time_offset</td>
+<td>The time offset</td>
+</tr>
+<tr class="row-odd"><td>uv_index</td>
+<td>The UV value</td>
+</tr>
+<tr class="row-even"><td>latitude</td>
+<td>The latitude where the user is</td>
+</tr>
+<tr class="row-odd"><td>longtitude</td>
+<td>The longtitude where the user is</td>
+</tr>
+<tr class="row-even"><td>altitude</td>
+<td>The altitude of the users position</td>
+</tr>
+<tr class="row-odd"><td>accuracy</td>
+<td>The accuracy of the position</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#class-user-models-model">class User(models.Model):</a></li>
+<li><a class="reference internal" href="#class-location-models-model">class Location(models.Model):</a></li>
+<li><a class="reference internal" href="#class-room-models-modela-room-the-user-is-in">class Room(models.ModelA Room the User is in):</a></li>
+<li><a class="reference internal" href="#class-question-models-model">class Question(models.Model):</a></li>
+<li><a class="reference internal" href="#class-choice-models-model">class Choice(models.Model):</a></li>
+<li><a class="reference internal" href="#class-useranswer-models-model">class UserAnswer(models.Model):</a></li>
+<li><a class="reference internal" href="#class-weather-models-model">class Weather(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorstepcount-models-model">class SensorStepCount(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorsleepstage-models-model">class SensorSleepStage(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorsleep-models-model">class SensorSleep(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorexercise-models-model">class SensorExercise(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorwaterintake-models-model">class SensorWaterIntake(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorfoodintake-models-model">class SensorFoodIntake(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorcaffeineintake-models-model">class SensorCaffeineIntake(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorheartrate-models-model">class SensorHeartRate(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorbodytemperature-models-model">class SensorBodyTemperature(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorbloodpressure-models-model">class SensorBloodPressure(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorhba1c-models-model">class SensorHbA1c(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorbloodglucose-models-model">class SensorBloodGlucose(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensoroxygensaturation-models-model">class SensorOxygenSaturation(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensorambienttemperature-models-model">class SensorAmbientTemperature(models.Model):</a></li>
+<li><a class="reference internal" href="#class-sensoruvexposure-models-model">class SensorUvExposure(models.Model):</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="quick_start.html" title="previous chapter">Quick Start Guide</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Eugen Wolf.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

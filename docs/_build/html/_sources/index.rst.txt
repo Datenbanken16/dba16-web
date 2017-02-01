@@ -18,16 +18,15 @@ First of all you have to register on our Page for having complete access.
 
 For styling we used bootstrap-elements.
 
-In this documentation you will find our database-models and functions we used for it.
+This documentation shows you how to start this project and how the models work.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   requirements <requirements.rst>
-   quick_start <quick_start.rst>
-
-
+   Requirements <requirements.rst>
+   Quickstart <quick_start.rst>
+   Models <models.rst>
 
 Indices and tables
 ==================
@@ -35,13 +34,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-
-Contents:
-.. toctree::
-
-   requirements
-   quick_start
-   modules/models
 
