@@ -1,4 +1,4 @@
 Models
 ======
-.. automodule:: dba16_web.coreapp.models
+.. automodule:: dba16web.coreapp.models
     :members:

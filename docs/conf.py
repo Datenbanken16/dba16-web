@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# myproject documentation build configuration file, created by
-# sphinx-quickstart on Thu Jan 19 10:49:31 2017.
+# dba16web documentation build configuration file, created by
+# sphinx-quickstart on Tue Jan 31 14:06:57 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -17,13 +17,20 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import django
 import os
 import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
-sys.path.insert(0, os.path.abspath('..'))
 from django.conf import settings
+
+# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('..'))
 settings.configure()
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'dba16web.settings'
+django.setup()
+sys.path.append('settings')
+
+
 
 # -- General configuration ------------------------------------------------
 
@@ -50,7 +57,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'dba16-web'
+project = 'dba16web'
 copyright = '2017, Eugen Wolf'
 author = 'Eugen Wolf'
 
@@ -68,7 +75,7 @@ release = '1.0'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'de'
+language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -104,7 +111,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'dba16-webdoc'
+htmlhelp_basename = 'dba16webdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -131,7 +138,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'dba16-web.tex', 'dba16-web Documentation',
+    (master_doc, 'dba16web.tex', 'dba16web Documentation',
      'Eugen Wolf', 'manual'),
 ]
 
@@ -141,7 +148,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'dba16-web', 'dba16-web Documentation',
+    (master_doc, 'dba16web', 'dba16web Documentation',
      [author], 1)
 ]
 
@@ -152,10 +159,12 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'dba16-web', 'dba16-web Documentation',
-     author, 'dba16-web', 'One line description of project.',
+    (master_doc, 'dba16web', 'dba16web Documentation',
+     author, 'dba16web', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+
 
 
 
