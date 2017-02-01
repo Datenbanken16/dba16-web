@@ -93,52 +93,52 @@ class SensorFoodIntakeSerializer(serializers.ModelSerializer):
 class SensorCaffeineIntakeSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorCaffeineIntake
-        field = ('amount', 'start_time', 'time_offset', 'unit_amount', 'user')
+        fields = ('amount', 'start_time', 'time_offset', 'unit_amount', 'user')
 
 
 class SensorHeartRateSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorHeartRate
-        field = ('end_time', 'heart_beat_count', 'heart_rate', 'start_time', 'time_offset', 'user')
+        fields = ('end_time', 'heart_beat_count', 'heart_rate', 'start_time', 'time_offset', 'user')
 
 
 class SensorBodyTemperatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorBodyTemperature
-        field = ('start_time', 'temperature', 'time_offset', 'user')
+        fields = ('start_time', 'temperature', 'time_offset', 'user')
 
 
 class SensorBloodPressureSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorBloodPressure
-        field = ('diastolic', 'mean', 'pulse', 'start_time', 'systolic', 'time_offset', 'user')
+        fields = ('diastolic', 'mean', 'pulse', 'start_time', 'systolic', 'time_offset', 'user')
 
 
 class SensorHbA1cSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorHbA1c
-        field = ('hba1c', 'start_time', 'time_offset', 'user')
+        fields = ('hba1c', 'start_time', 'time_offset', 'user')
 
 
 class SensorBloodGlucoseSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorBloodGlucose
-        field = ('glucose', 'meal_time', 'meal_type', 'measurement_type', 'sample_source_type', 'start_time', 'time_offset', 'user')
+        fields = ('glucose', 'meal_time', 'meal_type', 'measurement_type', 'sample_source_type', 'start_time', 'time_offset', 'user')
 
 
 class SensorOxygenSaturationSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorOxygenSaturation
-        field = ('end_time', 'heart_rate', 'spo2', 'start_time', 'time_offset', 'user')
+        fields = ('end_time', 'heart_rate', 'spo2', 'start_time', 'time_offset', 'user')
 
 
 class SensorAmbientTemperatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorAmbientTemperature
-        field = ('accuracy', 'altitude', 'humidity', 'latitude', 'longitude', 'start_time', 'temperature', 'time_offset', 'user')
+        fields = ('accuracy', 'altitude', 'humidity', 'latitude', 'longitude', 'start_time', 'temperature', 'time_offset', 'user')
 
 
 class SensorUvExposureSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorUvExposure
-        field = ('accuracy', 'altitude', 'latitude', 'longitude', 'start_time', 'time_offset', 'user', 'uv_index')
+        fields = ('accuracy', 'altitude', 'latitude', 'longitude', 'start_time', 'time_offset', 'user', 'uv_index')
