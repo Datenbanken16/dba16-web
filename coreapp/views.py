@@ -173,10 +173,6 @@ def show_profile(request):
 
     return render(request, 'coreapp/myprofileView.html', data)
 
-def registration_successful(request):
-    return HttpResponse("<font color=\"green\">User was successfully registered :)</font>")
-
-
 def show_user_registration_form(request):
     if request.method == 'GET':
         return render(request, 'coreapp/registrationView.html', {})
@@ -205,7 +201,7 @@ def show_user_registration_form(request):
                 try:
                     newUser.password = make_password(newUser.password)
                     newUser.save_forRegView()
-                    return HttpResponseRedirect(reverse('coreapp:reg_ok'))
+                    return render(request, 'coreapp/loginView.html')
                 except ValueError as e:
                     return reload(e)
                 except:
