@@ -21,14 +21,428 @@
         display: inline-block;
         font-size: 14px;
     }
+    a .link {
+        color: #008CBA;
+        size: 30px;
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
     </style>
+    <script type='text/javascript'>
+    /** A global variable to set up the URL we take the JSONs from */
+    //var path = "http://127.0.0.1:8000";
+    var path = "rs03-db-inf-min.ad.fh-bielefeld.de";
+
+    /** Show's the stepcount in a table from the URL set up in the global variable path */
+    function showStepcount() {
+        $.getJSON(path+'/sensor/stepcount/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>stepcount</th>" )
+            $( ".inner" ).append( "<th>calorie</th>");
+            $( ".inner" ).append( "<th>count</th>");
+            $( ".inner" ).append( "<th>distance</th>");
+            $( ".inner" ).append( "<th>end_time</th>");
+            $( ".inner" ).append( "<th>sample_position_type</th>");
+            $( ".inner" ).append( "<th>speed</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].calorie+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].count+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].distance+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].end_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].sample_position_type+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].speed+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the sleepstage in a table from the URL set up in the global variable path.
+        Not avaiable in this version */
+    function showSleepstage() {
+        $.getJSON(path+'/sensor/sleepstage/', function(data) {
+            console.log(data)
+
+        });
+    }
+
+    /** Show's the sleep in a table from the URL set up in the global variable path */
+    function showSleep() {
+        $.getJSON(path+'/sensor/sleep/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>sleep</th>" )
+            $( ".inner" ).append( "<th>end_time</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].end_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the exercise in a table from the URL set up in the global variable path.
+        Not avaiable in this version*/
+    function showExercise() {
+        $.getJSON(path+'/sensor/exercise/', function(data) {
+            console.log(data)
+
+        });
+    }
+
+    /** Show's the waterintake in a table from the URL set up in the global variable path */
+    function showWaterintake() {
+        $.getJSON(path+'/sensor/waterintake/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>waterintake</th>" )
+            $( ".inner" ).append( "<th>amount</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "<th>unit_amount</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].amount+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].unit_amount+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the foodintake in a table from the URL set up in the global variable path */
+    function showFoodintake() {
+        $.getJSON(path+'/sensor/foodintake/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>foodintake</th>" )
+            $( ".inner" ).append( "<th>amount</th>");
+            $( ".inner" ).append( "<th>calorie</th>");
+            $( ".inner" ).append( "<th>food_info_id</th>");
+            $( ".inner" ).append( "<th>meal_type</th>");
+            $( ".inner" ).append( "<th>name</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "<th>unit</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].amount+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].calorie+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].food_info_id+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].meal_type+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].name+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].unit+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the caffeineintake in a table from the URL set up in the global variable path */
+    function showCaffeineintake() {
+        $.getJSON(path+'/sensor/caffeineintake/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>caffeinintake</th>" )
+            $( ".inner" ).append( "<th>amount</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "<th>unit_amount</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].amount+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].unit_amount+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the heartrate in a table from the URL set up in the global variable path */
+    function showHeartrate() {
+        $.getJSON(path+'/sensor/heartrate/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>heartrate</th>" )
+            $( ".inner" ).append( "<th>end_time</th>");
+            $( ".inner" ).append( "<th>heart_beat_count</th>");
+            $( ".inner" ).append( "<th>heart_rate</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].end_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].heart_beat_count+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].heart_rate+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the bodytemperature in a table from the URL set up in the global variable path */
+    function showBodytemperature() {
+        $.getJSON(path+'/sensor/bodytemperature/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>bodytemperature</th>" )
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>temperature</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].temperature+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the HBA1C in a table from the URL set up in the global variable path */
+    function showHBA1C() {
+        $.getJSON(path+'/sensor/hba1c/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>HBA1C</th>" )
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the bloodglucose in a table from the URL set up in the global variable path */
+    function showBloodglucose() {
+        $.getJSON(path+'/sensor/bloodglucose/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>bloodglucose</th>" )
+            $( ".inner" ).append( "<th>meal_time</th>");
+            $( ".inner" ).append( "<th>meal_type</th>");
+            $( ".inner" ).append( "<th>measurement_type</th>");
+            $( ".inner" ).append( "<th>sample_source_type</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].meal_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].meal_type+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].measurement_type+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].sample_source_type+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the bloodpressure in a table from the URL set up in the global variable path */
+    function showBloodpressure() {
+        $.getJSON(path+'/sensor/bloodpressure/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>bloodpressure</th>" )
+            $( ".inner" ).append( "<th>diastolic</th>");
+            $( ".inner" ).append( "<th>mean</th>");
+            $( ".inner" ).append( "<th>pulse</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>systolic</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].diastolic+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].mean+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].pulse+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].systolic+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the oxygensaturation in a table from the URL set up in the global variable path */
+    function showOxygensaturation() {
+        $.getJSON(path+'/sensor/oxygensaturation/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>oxygensaturation</th>" )
+            $( ".inner" ).append( "<th>end_time</th>");
+            $( ".inner" ).append( "<th>heart_rate</th>");
+            $( ".inner" ).append( "<th>spo2</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].end_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].heart_rate+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].spo2+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the ambienttemperature in a table from the URL set up in the global variable path */
+    function showAmbienttemperature() {
+        $.getJSON(path+'/sensor/ambienttemperature/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>ambienttemperature</th>" )
+            $( ".inner" ).append( "<th>accuracy</th>");
+            $( ".inner" ).append( "<th>altitude</th>");
+            $( ".inner" ).append( "<th>humidity</th>");
+            $( ".inner" ).append( "<th>latitude</th>");
+            $( ".inner" ).append( "<th>longitude</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>temperature</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].accuracy+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].altitude+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].humidity+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].latitude+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].longitude+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].temperature+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    /** Show's the uvexposure in a table from the URL set up in the global variable path */
+    function showUvexposure() {
+        $.getJSON(path+'/sensor/uvexposure/', function(data) {
+            console.log(data)
+
+            $( ".inner" ).append( "<br />" );
+            $( ".inner" ).append( "<table>" )
+            $( ".inner" ).append( "<tr>" )
+            $( ".inner" ).append( "<th>uvexposure</th>" )
+            $( ".inner" ).append( "<th>accuracy</th>");
+            $( ".inner" ).append( "<th>altitude</th>");
+            $( ".inner" ).append( "<th>latitude</th>");
+            $( ".inner" ).append( "<th>longitude</th>");
+            $( ".inner" ).append( "<th>start_time</th>");
+            $( ".inner" ).append( "<th>time_offset</th>");
+            $( ".inner" ).append( "<th>uv_index</th>");
+            $( ".inner" ).append( "</tr>");
+            for (var i in data) {
+                $( ".inner" ).append( "<tr>");
+                $( ".inner" ).append( "<td>"+data[i].user+"</td>" )
+                $( ".inner" ).append( "<td>"+data[i].accuracy+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].altitude+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].latitude+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].longitude+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].start_time+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].time_offset+"</td>");
+                $( ".inner" ).append( "<td>"+data[i].uv_index+"</td>");
+            }
+            $( ".inner" ).append( "</tr></table>" );
+        });
+    }
+
+    </script>
 </head>
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a href="../home"><img class="navbar-brand" src="http://i.imgur.com/duGBAxp.png" /></a>
+            <a href="../home"><img class="navbar-brand" src="http://i.imgur.com/duGBAxp.png"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -60,14 +474,25 @@
 <br><br><br>
 
 <div class="container">
-    <h3>Ja ne</h3>
-    <p>Hier kommt noch was hin</p>
-
-    <h4>Name: {% if username %}{{ username }}{% endif %}</h4>
-    <h4>E-Mail: {% if email %}{{ email }}{% endif %}</h4>
-    <h4>Age: {% if age %}{{ age }}{% endif %}</h4>
-    <h4>Gender: {% if gender %}{{ gender }}{% endif %}</h4>
+    <h3>Tabellen&uuml;bersicht</h3>
+    <h4>&Uuml;bersicht ausw&auml;hlen: <br/></h4>
+    <a onclick="showStepcount()" class="link">stepcount</a><br/>
+    <a onclick="showSleepstage()" class="link">sleepstage N/A</a><br/>
+    <a onclick="showSleep()" class="link">sleep</a><br/>
+    <a onclick="showExercise()" class="link">exercise N/A</a><br/>
+    <a onclick="showWaterintake()" class="link">waterintake</a><br/>
+    <a onclick="showFoodintake()" class="link">foodintake</a><br/>
+    <a onclick="showCaffeineintake()" class="link">caffeineintake</a><br/>
+    <a onclick="showHeartrate()" class="link">heartrate</a><br/>
+    <a onclick="showBodytemperature()" class="link">bodytemperature</a><br/>
+    <a onclick="showBloodpressure()" class="link">bloodpressure</a><br/>
+    <a onclick="showHBA1C()" class="link">HBA1C</a><br/>
+    <a onclick="showBloodglucose()" class="link">bloodglucose</a><br/>
+    <a onclick="showOxygensaturation()" class="link">oxygensaturation</a><br/>
+    <a onclick="showAmbienttemperature()" class="link">ambienttemperature</a><br/>
+    <a onclick="showUvexposure()" class="link">uvexposure</a><br/>
+    <div class="inner"></div>
+    <br/><br/><br/>
 </div>
-
 </body>
 </html>
