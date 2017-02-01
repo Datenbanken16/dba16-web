@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^users/eingeloggtView/$', views.user_logout, name='eingeloggt'),
     url(r'^users/$', views.user_list),
     url(r'^users/test/$', views.TestPageView.as_view(), name='test'),
-    url(r'^users/myprofile/$', views.show_profile, name='myprofile'),
+    url(r'^myprofile/$', views.show_profile, name='myprofile'),
     url(r'^users/reg_user/$', views.show_user_registration_form, name='reg_user'),
     url(r'^users/auth/$', views.auth_check),
     url(r'^users/(?P<pk>((\w+\W*)|(\W+\w*)))/$', views.user_detail),
@@ -24,6 +24,6 @@ urlpatterns = [
     url(r'^charts', views.ChartsPageView.as_view(), name='charts'),
     url(r'^index', views.IndexPageView.as_view(), name='index'),
     url(r'^home', views.HomePageView.as_view(), name='home'),
-    url(r'^myprofile', views.MyprofilePageView.as_view(), name='profile'),
+    #url(r'^myprofile', views.MyprofilePageView.as_view(), name='profile'),
     url(r'^tables', views.TablesPageView.as_view(), name='tables')
 ]
