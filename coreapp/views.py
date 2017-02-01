@@ -326,6 +326,126 @@ def sensor_stepcount_get(request):
 
 
 @csrf_exempt
+def sensor_sleepstage_get(request):
+    if request.method == 'GET':
+        sleepStage = SensorSleepStage.objects.all()
+        serializer = SensorSleepStageSerializer(sleepStage, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_sleep_get(request):
+    if request.method == 'GET':
+        sleep = SensorSleep.objects.all()
+        serializer = SensorSleepSerializer(sleep, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_exercise_get(request):
+    if request.method == 'GET':
+        exercise = SensorExercise.objects.all()
+        serializer = SensorExerciseSerializer(exercise, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_exercise_get(request):
+    if request.method == 'GET':
+        exercise = SensorExercise.objects.all()
+        serializer = SensorExerciseSerializer(exercise, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_waterintake_get(request):
+    if request.method == 'GET':
+        waterintake = SensorWaterIntake.objects.all()
+        serializer = SensorWaterIntakeSerializer(waterintake, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_foodintake_get(request):
+    if request.method == 'GET':
+        foodintake = SensorFoodIntake.objects.all()
+        serializer = SensorFoodIntakeSerializer(foodintake, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_caffeineintake_get(request):
+    if request.method == 'GET':
+        caffeineintake = SensorCaffeineIntake.objects.all()
+        serializer = SensorCaffeineIntakeSerializer(caffeineintake, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_heartrate_get(request):
+    if request.method == 'GET':
+        heartrate = SensorHeartRate.objects.all()
+        serializer = SensorHeartRateSerializer(heartrate, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_bodytemperature_get(request):
+    if request.method == 'GET':
+        bodytemperature = SensorBodyTemperature.objects.all()
+        serializer = SensorBodyTemperatureSerializer(bodytemperature, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_bloodpressure_get(request):
+    if request.method == 'GET':
+        bloodpressure = SensorBloodPressure.objects.all()
+        serializer = SensorBloodPressureSerializer(bloodpressure, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_hba1c_get(request):
+    if request.method == 'GET':
+        hba1c = SensorHbA1c.objects.all()
+        serializer = SensorHbA1cSerializer(hba1c, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_bloodglucose_get(request):
+    if request.method == 'GET':
+        bloodglucose = SensorBloodGlucose.objects.all()
+        serializer = SensorBloodGlucoseSerializer(bloodglucose, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_oxygensaturation_get(request):
+    if request.method == 'GET':
+        oxygensaturation = SensorOxygenSaturation.objects.all()
+        serializer = SensorOxygenSaturationSerializer(oxygensaturation, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_ambienttemperature_get(request):
+    if request.method == 'GET':
+        ambienttemperature = SensorAmbientTemperature.objects.all()
+        serializer = SensorAmbientTemperatureSerializer(ambienttemperature, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def sensor_uvexposure_get(request):
+    if request.method == 'GET':
+        uvexposure = SensorUvExposure.objects.all()
+        serializer = SensorUvExposureSerializer(uvexposure, many=True)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
 def weather_add(request, pk):
     try:
         data = JSONParser().parse(request)
