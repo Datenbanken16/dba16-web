@@ -24,6 +24,9 @@ In this documentation you will find our database-models and functions we used fo
    :maxdepth: 2
    :caption: Contents:
 
+   requirements <requirements.rst>
+   quick_start <quick_start.rst>
+
 
 
 Indices and tables
@@ -38,5 +41,7 @@ Indices and tables
 Contents:
 .. toctree::
 
+   requirements
+   quick_start
    modules/models
 
