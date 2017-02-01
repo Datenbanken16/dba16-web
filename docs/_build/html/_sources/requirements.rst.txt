@@ -8,7 +8,8 @@ The requirements necessary to use this Django Project are:
 - A random **Webbrowser**
 - **Bootstrap**
 
-<a href="https://github.com/Datenbanken16/dba16-web alt="#">See dba16web</a>
+See :
+https://github.com/Datenbanken16/dba16-web
 or continue with :doc:`quick_start`!
 
 

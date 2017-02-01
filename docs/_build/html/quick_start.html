@@ -57,7 +57,7 @@
 <blockquote>
 <div>$ sudo apt-get update
 $ sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib</div></blockquote>
-<p>Change to the User who was created by the commands before (postgres):</p>
+<p>Switch to the User who was created by the commands before (postgres):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo su - postgres
 </pre></div>
 </div>
@@ -94,10 +94,10 @@ $ <span class="nb">exit</span>
 </div>
 <p>The django REST framework, markdown support for browsable API and filtering support</p>
 <p>Add &#8216;rest_framework&#8217; to your INSTALLED_APPS setting in settings.py.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">INSTALLED_APPS</span> <span class="o">=</span> <span class="o">(</span>
-$     ...
-$     <span class="s1">&#39;rest_framework&#39;</span>,
-$ <span class="o">)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">INSTALLED_APPS</span> <span class="o">=</span> <span class="o">(</span>
+    ...
+    <span class="s1">&#39;rest_framework&#39;</span>,
+<span class="o">)</span>
 </pre></div>
 </div>
 <p>If you&#8217;re intending to use the browsable API you&#8217;ll probably also want to add REST framework&#8217;s login and logout views. Add the following to your root urls.py file.</p>
@@ -109,7 +109,7 @@ $ <span class="o">)</span>
 </div>
 <p>More Information on Django REST Framework: <a class="reference external" href="http://www.django-rest-framework.org/">http://www.django-rest-framework.org/</a></p>
 <p>To avoid crossite-skripting Conflicts install Django CORS Headers</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install django-cors-headers
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install django-cors-headers
 </pre></div>
 </div>
 <p>make some changes in settings.py:</p>
@@ -164,16 +164,21 @@ $ <span class="o">)</span>
 </div>
 <p>To start your server. Open another terminal and navigate to /etc/init.d/ and start your database with &#8221;./postgresql start&#8221;. With the command &#8220;psql -l&#8221; you can see your running databases.</p>
 <p>Apply the migrations to your database. Go into your Project (the &#8220;dba16-web&#8221; folder). And set up the initial databse structure:</p>
-<p>python manage.py makemigrations
-python manage.py migrate
-Create an administrative account:</p>
-<p>python manage.py createsuperuser
-Select a username,emailadress and password. Test youre Server:</p>
-<p>python manage.py runserver 127.0.0.1:8000
-Visit your server in your web browser:</p>
-<p><a class="reference external" href="http://server_domain_or_IP:8000">http://server_domain_or_IP:8000</a>
-maybe: localhost:8000
-How to fix the &#8220;bad magic number&#8221; error</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python manage.py makemigrations
+$ python manage.py migrate
+</pre></div>
+</div>
+<p>Create an administrative account:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python manage.py createsuperuser
+</pre></div>
+</div>
+<p>Select a username,emailadress and password. Test youre Server:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python manage.py runserver 127.0.0.1:8000
+</pre></div>
+</div>
+<p>Visit your server in your web browser:</p>
+<p><a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p>
+<p>How to fix the &#8220;bad magic number&#8221; error</p>
 <p>Run from the highest directory of your project:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>find . -name <span class="s1">&#39;*.pyc&#39;</span> -delete
 </pre></div>
