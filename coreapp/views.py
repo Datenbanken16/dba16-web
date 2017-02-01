@@ -111,7 +111,8 @@ def user_login(request):
         })
     if request.method == 'GET':
         if request.session.has_key('username'):
-            return show_profile(request)
+            #return show_home(request)
+            return show_home(request)
         else:
             return render(request, 'coreapp/loginView.html')
     else:
@@ -123,7 +124,8 @@ def user_login(request):
             return reload('Username oder Passwort falsch.')
         if check_password(user_request_password, user_datensatz.password):
             request.session['username'] = user_datensatz.username
-            return show_profile(request)
+            #return show_home(request)
+            return show_home(request)
         else:
             return reload('Username oder Passwort falsch.')
 
@@ -140,6 +142,10 @@ def user_logout(request):
         pass
 
 
+def show_home(request):
+    return render(request, 'coreapp/home.html')
+
+
 def show_profile(request):
     user = 0
     if request.session.has_key('username'):
@@ -154,7 +160,7 @@ def show_profile(request):
         'username': user.username,
         'email': user.email,
         'age': user.age,
-        'gender': 'male' if user.gender == 'm' else 'female',
+        'gender': 'männlich' if user.gender == 'm' else 'weiblich',
     }
 
     if request.method == 'POST':
