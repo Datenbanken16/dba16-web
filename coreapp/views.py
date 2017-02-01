@@ -323,6 +323,13 @@ def location_room_get(request):
         serializer = LocationRoomSerializer(location, many=True)
         return JSONResponse(serializer.data)
 
+@csrf_exempt
+def sensor_stepcount_get(request):
+    if request.method == 'GET':
+        stepcount = SensorStepCount.objects.all()
+        serializer = SensorStepCountSerializer(stepcount, many=True)
+        return JSONResponse(serializer.data)
+
 
 @csrf_exempt
 def weather_add(request, pk):

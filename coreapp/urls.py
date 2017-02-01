@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^location/room/add/(?P<pk>[0-9]+)/$', views.room_add),
     url(r'^location/room/$', views.location_room_get),
     url(r'^location/weather/add/(?P<pk>[0-9]+)/$', views.weather_add),
+    url(r'^sensor/stepcount/$', views.sensor_stepcount_get),
     url(r'^sensor/data/(?P<user>((\w+\W*)|(\W+\w*)))/$', views.sensordata_add),
     url(r'^charts', views.ChartsPageView.as_view(), name='charts'),
     url(r'^index', views.IndexPageView.as_view(), name='index'),
