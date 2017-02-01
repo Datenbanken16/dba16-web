@@ -158,7 +158,7 @@ def show_profile(request):
     }
 
     if request.method == 'POST':
-        if request.POST['newpassword']:
+        if request.POST.get('newpassword', False):
             if request.POST['newpassword'] != request.POST['reppassword']:
                 data['error_message'] = "wrong password repitition"
             else:
@@ -170,9 +170,6 @@ def show_profile(request):
                     data['error_message'] = e
                 except:
                     data['error_message'] = "something went terribly wrong"
-
-    if request.method == 'POST' and 'logout' in request.POST:
-        return user_logout(request)
 
     return render(request, 'coreapp/myprofileView.html', data)
 
