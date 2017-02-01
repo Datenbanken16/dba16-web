@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^sensor/waterintake/$', views.sensor_waterintake_get),
     url(r'^sensor/foodintake/$', views.sensor_foodintake_get),
     url(r'^sensor/caffeineintake/$', views.sensor_caffeineintake_get),
-    url(r'^sensor/heartrateintake/$', views.sensor_heartrate_get),
+    url(r'^sensor/heartrate/$', views.sensor_heartrate_get),
     url(r'^sensor/bodytemperature/$', views.sensor_bodytemperature_get),
     url(r'^sensor/bloodpressure/$', views.sensor_bloodpressure_get),
     url(r'^sensor/hba1c/$', views.sensor_hba1c_get),
